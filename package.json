@@ -1,0 +1,30 @@
+{
+  "name": "job-board",
+  "version": "1.0.0",
+  "description": "a system for companies to post jobs and users to apply for them",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "docker": "docker-compose up -d && docker exec -it job-board bash"
+  },
+  "author": "Manar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "nodemon": "^2.0.16",
+    "swagger-ui-express": "^4.4.0"
+  }
+}
