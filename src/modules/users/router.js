@@ -6,9 +6,15 @@ import { usersRequestValidations } from './validation.js'
 const router = new Router()
 
 router.post(
-  '/users/sign-up',
-  validateRequestSchema(usersRequestValidations.signupUser),
-  usersController.signupUser
+  '/sign-up',
+  validateRequestSchema(usersRequestValidations.signUpUser),
+  usersController.signUpUser
+)
+
+router.post(
+  '/sign-in',
+  validateRequestSchema(usersRequestValidations.signInUser),
+  usersController.signInUser
 )
 
 export default router
