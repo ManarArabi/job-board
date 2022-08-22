@@ -8,7 +8,7 @@ import { Users } from './model.js'
 
 const { CONFLICT, CREATED, NOT_FOUND, UNAUTHORIZED, OK } = httpStatus
 
-export const usersController = {
+export const UsersController = {
   signUpUser: async (req, res, next) => {
     const {
       body: {

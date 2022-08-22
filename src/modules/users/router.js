@@ -1,20 +1,20 @@
 import { Router } from 'express'
 import { validateRequestSchema } from '../../middlewares/validateRequestSchema.js'
-import { usersController } from './controller.js'
-import { usersRequestValidations } from './validation.js'
+import { UsersController } from './controller.js'
+import { UsersRequestValidations } from './validation.js'
 
 const router = new Router()
 
 router.post(
   '/sign-up',
-  validateRequestSchema(usersRequestValidations.signUpUser),
-  usersController.signUpUser
+  validateRequestSchema(UsersRequestValidations.signUpUser),
+  UsersController.signUpUser
 )
 
 router.post(
   '/sign-in',
-  validateRequestSchema(usersRequestValidations.signInUser),
-  usersController.signInUser
+  validateRequestSchema(UsersRequestValidations.signInUser),
+  UsersController.signInUser
 )
 
 export default router

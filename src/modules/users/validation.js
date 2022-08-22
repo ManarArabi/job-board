@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-export const usersRequestValidations = {
+export const UsersRequestValidations = {
   signUpUser: {
     body: {
       firstName: Joi.string().required().min(3),
