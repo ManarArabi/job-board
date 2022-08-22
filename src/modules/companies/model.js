@@ -23,7 +23,8 @@ const companySchema = new mongoose.Schema({
   adminId: {
     type: mongoose.Types.ObjectId,
     ref: 'users',
-    required: true
+    required: true,
+    unique: true
   }
 })
 
