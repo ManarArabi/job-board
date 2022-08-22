@@ -19,5 +19,11 @@ export const VacanciesRequestValidations = {
     body: {
       status: Joi.string().valid(...VACANCY_STATUSES).required()
     }
+  },
+
+  listVacancies: {
+    query: {
+      yearsOfExperience: Joi.number()
+    }
   }
 }

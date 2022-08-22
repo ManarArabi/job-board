@@ -20,4 +20,11 @@ router.patch(
   VacanciesController.updateVacancyStatus
 )
 
+router.get(
+  '/',
+  authenticate,
+  validateRequestSchema(VacanciesRequestValidations.listVacancies),
+  VacanciesController.listVacancies
+)
+
 export default router
