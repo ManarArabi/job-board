@@ -13,4 +13,11 @@ router.post(
   VacanciesController.createVacancy
 )
 
+router.patch(
+  '/:id/status',
+  authenticate,
+  validateRequestSchema(VacanciesRequestValidations.updateVacancyStatus),
+  VacanciesController.updateVacancyStatus
+)
+
 export default router

@@ -9,5 +9,15 @@ export const VacanciesRequestValidations = {
       yearsOfExperience: Joi.number().required(),
       status: Joi.string().valid(...VACANCY_STATUSES)
     }
+  },
+
+  updateVacancyStatus: {
+    params: {
+      id: Joi.string().required()
+    },
+
+    body: {
+      status: Joi.string().valid(...VACANCY_STATUSES).required()
+    }
   }
 }

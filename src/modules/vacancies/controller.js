@@ -5,7 +5,7 @@ import { Companies } from '../companies/model.js'
 import { VACANCY_OPEN_STATUS } from './constants.js'
 import { Vacancies } from './model.js'
 
-const { UNPROCESSABLE_ENTITY, CREATED } = httpStatus
+const { UNPROCESSABLE_ENTITY, CREATED, NOT_FOUND, FORBIDDEN, NO_CONTENT } = httpStatus
 
 export const VacanciesController = {
   createVacancy: async (req, res, next) => {
@@ -24,6 +24,31 @@ export const VacanciesController = {
       const vacancy = await Vacancies.create({ title, description, status, yearsOfExperience, companyId: company._id, authorId: userId })
 
       return res.json(vacancy).status(CREATED).send()
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  updateVacancyStatus: async (req, res, next) => {
+    try {
+      const {
+        body: { status },
+        params: { id: vacancyId },
+        user: { _id: userId }
+      } = req
+
+      const vacancy = await Vacancies.findOne({ _id: vacancyId }, { authorId: 1 }).lean()
+      if (_.isNil(vacancy)) {
+        throw HttpError({ message: 'There is no vacancy with the provided id', status: NOT_FOUND })
+      }
+
+      if (String(vacancy.authorId) !== String(userId)) {
+        throw HttpError({ message: 'The caller has no access for the provided vacancy', status: FORBIDDEN })
+      }
+
+      await Vacancies.updateOne({ _id: vacancyId }, { status })
+
+      return res.status(NO_CONTENT).send()
     } catch (err) {
       next(err)
     }
