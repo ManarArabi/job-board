@@ -14,11 +14,14 @@
   "author": "Manar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "http-status": "^1.5.2",
     "joi": "^17.6.0",
     "lodash": "^4.17.21",
-    "mongoose": "^6.3.3"
+    "mongoose": "^6.3.3",
+    "rand-token": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^8.15.0",
