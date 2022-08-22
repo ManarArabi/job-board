@@ -29,7 +29,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-promise": "^6.0.0",
-    "nodemon": "^2.0.16",
-    "swagger-ui-express": "^4.4.0"
+    "nodemon": "^2.0.16"
   }
 }
