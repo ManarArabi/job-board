@@ -18,7 +18,7 @@ export const VacanciesController = {
       const company = await Companies.findOne({ adminId: userId }, { _id: 1 }).lean()
 
       if (_.isNil(company)) {
-        throw HttpError({ message: 'The caller is not an admin for any registered company', status: UNPROCESSABLE_ENTITY })
+        throw new HttpError({ message: 'The caller is not an admin for any registered company', status: UNPROCESSABLE_ENTITY })
       }
 
       const vacancy = await Vacancies.create({ title, description, status, yearsOfExperience, companyId: company._id, authorId: userId })
@@ -39,11 +39,11 @@ export const VacanciesController = {
 
       const vacancy = await Vacancies.findOne({ _id: vacancyId }, { authorId: 1 }).lean()
       if (_.isNil(vacancy)) {
-        throw HttpError({ message: 'There is no vacancy with the provided id', status: NOT_FOUND })
+        throw new HttpError({ message: 'There is no vacancy with the provided id', status: NOT_FOUND })
       }
 
       if (String(vacancy.authorId) !== String(userId)) {
-        throw HttpError({ message: 'The caller has no access for the provided vacancy', status: FORBIDDEN })
+        throw new HttpError({ message: 'The caller has no access for the provided vacancy', status: FORBIDDEN })
       }
 
       await Vacancies.updateOne({ _id: vacancyId }, { status })
